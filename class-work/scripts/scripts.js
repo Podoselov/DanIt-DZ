@@ -43,15 +43,15 @@
 // }
 // console.log(changeStr(userStr));
 
-let userName = prompt('Name');
-let userSurname = prompt('Surname');
-let userAge = prompt('Age');
+// let userName = prompt('Name');
+// let userSurname = prompt('Surname');
+// let userAge = prompt('Age');
 
-let userInfo = {
-  name: userName,
-  surname: userSurname,
-  age: userAge,
-  sayHi: `Привет, я ${userName}, ${userSurname}, мне ${userAge}`,
-};
+// let userInfo = {
+//   name: userName,
+//   surname: userSurname,
+//   age: userAge,
+//   sayHi: `Привет, я ${userName}, ${userSurname}, мне ${userAge}`,
+// };
 
-console.log(userInfo.sayHi);
+// console.log(userInfo.sayHi);
