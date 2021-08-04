@@ -4,14 +4,18 @@ let userAge = '';
 do {
   userName = prompt('Enter your name', `${userName}`);
   userAge = prompt('How old are you', `${userAge}`);
-} while (
-  userName === null ||
-  userName.trim() === '' ||
-  userAge === null ||
-  typeof +userAge !== 'number' ||
-  isNaN(+userAge) ||
-  userAge.trim() === ''
-);
+} while (valid(userName, userAge));
+
+function valid(name, age) {
+  return (
+    name === null ||
+    name.trim() === '' ||
+    age === null ||
+    typeof +age !== 'number' ||
+    Number.isNaN(+age) ||
+    age.trim() === ''
+  );
+}
 
 function authorization(name, age) {
   let errorMessage = 'You are not allowed to visit this website';
