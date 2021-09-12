@@ -89,19 +89,12 @@ a {
     padding: 16px;
     border-radius: 6px;
   }
-  &__search {
-    width: 21px;
-    height: 20px;
-    background-color: #ffffff99;
-    display: block;
-    mask-image: url(../img/searchIcon.svg);
-    &:hover {
-      background-color: var(--basic-grin);
-    }
+  &__search:hover .svg-path {
+    fill: #18cfab;
   }
   &__item8:hover {
     border-bottom: 2px solid #18cfab;
-    padding: 35px 0 33px 0;
+    padding: 34px 0 32px 0;
   }
 }
 
