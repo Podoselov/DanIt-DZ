@@ -1,0 +1,120 @@
+.services {
+  background-color: var(--basic-white);
+  font-family: 'MontserratRegular';
+  &__wraper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 8px solid #fff;
+    margin-bottom: 90px;
+  }
+  &__item {
+    background-color: var(--basic-dark-blue);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 87px 0;
+  }
+  &__name {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: var(--basic-grin);
+  }
+  &__img {
+    padding-bottom: 51px;
+  }
+  &__item--color {
+    background-color: var(--basic-grin);
+  }
+  &__name--color {
+    color: var(--basic-white);
+  }
+  &__heading {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 40px;
+    color: var(--basic-light-black);
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 75px;
+      height: 1px;
+      background-color: var(--basic-grin);
+    }
+    &::after {
+      left: 550px;
+      top: 68px;
+    }
+    &::before {
+      left: 540px;
+      top: 64px;
+    }
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin-bottom: 23px;
+  }
+  &__link {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 39px;
+    color: var(--basic-gray);
+    border: 1px solid #edefef;
+    background-color: var(--basic-dark-white);
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+    position: relative;
+    outline: none;
+    &:hover {
+      border-color: #18cfab;
+    }
+  }
+  &__container {
+    position: relative;
+    height: 275px;
+  }
+  &__description {
+    display: flex;
+    margin-bottom: 91px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+    &--show {
+      opacity: 1;
+    }
+  }
+  &__text {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--basic-light-gray);
+    margin-left: 13px;
+  }
+}
+.active-el {
+  background-color: var(--basic-grin);
+  color: var(--basic-white);
+  &::after {
+    content: '';
+    position: absolute;
+    border: 10px solid transparent;
+    border-top: 10px solid #18cfab;
+    left: 45%;
+    top: 100%;
+  }
+  &:hover {
+    border: 1px solid #edefef;
+  }
+}

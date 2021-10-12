@@ -1,0 +1,105 @@
+.news {
+  font-family: 'MontserratRegular';
+  &__wraper {
+    background-color: #fff;
+  }
+  &__heading-main {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 40px;
+    text-align: center;
+    color: var(--basic-work-dark-gray);
+    margin: 84px 0 100px;
+    position: relative;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 75px;
+      height: 1px;
+      background-color: var(--basic-grin);
+    }
+    &::after {
+      left: 550px;
+      top: 70px;
+    }
+    &::before {
+      left: 538px;
+      top: 66px;
+    }
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 35px;
+    margin-bottom: 125px;
+  }
+  &__list-item {
+    background-color: var(--basic-dark-white);
+    position: relative;
+    &:hover .news__data {
+      background-color: var(--basic-grin);
+      transition: 0.3s;
+    }
+    &:hover .news__heading {
+      color: var(--basic-grin);
+      transition: 0.3s;
+    }
+  }
+  &__data {
+    width: 70px;
+    height: 68px;
+    background-color: var(--basic-news-dark-grin);
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__data-number {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 25px;
+    color: var(--basic-white);
+  }
+  &__heading {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 39px;
+    color: var(--basic-gray);
+    margin-left: 15px;
+  }
+  &__admin {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 39px;
+    color: var(--basic-light-gray);
+    display: inline-block;
+    position: relative;
+    margin-left: 20px;
+    margin-right: 28px;
+    &::after {
+      content: '';
+      width: 1px;
+      height: 13px;
+      background-color: var(--basic-light-gray);
+      position: absolute;
+      top: 12px;
+      left: 70px;
+    }
+  }
+  &__comment {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 39px;
+    color: var(--basic-light-gray);
+    display: inline-block;
+  }
+}
