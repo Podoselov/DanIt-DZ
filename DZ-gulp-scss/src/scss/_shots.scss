@@ -1,0 +1,65 @@
+.shots {
+  &__wraper {
+    background-color: $shots-bg-color;
+  }
+  &__name {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__heading {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 48px 0 54px;
+    text-transform: uppercase;
+    color: $main-text-color;
+    @include media-breakpoint-down-md {
+      padding: 48px 0 35px;
+    }
+    @include media-breakpoint-down-sm {
+      padding: 13px 0 38px;
+      font-size: 14px;
+    }
+  }
+  &__heading2 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: $main-text-color;
+    padding: 47px 0 24px;
+    @include media-breakpoint-down-md {
+      padding: 47px 0 35px;
+    }
+    @include media-breakpoint-down-sm {
+      display: none;
+    }
+  }
+  &__photo {
+    display: flex;
+    padding-bottom: 49px;
+    @include media-breakpoint-down-sm {
+      padding-bottom: 42px;
+    }
+  }
+  &__item {
+    &:not(:last-child) {
+      margin-right: 10px;
+      @include media-breakpoint-down-md {
+        margin-right: 9px;
+      }
+    }
+    @include media-breakpoint-down-md {
+      &:last-child {
+        display: none;
+      }
+    }
+    &--hidden {
+      @include media-breakpoint-down-sm {
+        display: none;
+      }
+    }
+  }
+}

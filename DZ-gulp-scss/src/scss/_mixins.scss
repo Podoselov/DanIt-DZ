@@ -1,0 +1,31 @@
+@mixin media-breakpoint-down {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+@mixin media-breakpoint-down-sm {
+  @media (max-width: 575px) {
+    @content;
+  }
+}
+@mixin media-breakpoint-down-md {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down-lg {
+  @media (max-width: 991px) {
+    @content;
+  }
+}
+@mixin media-breakpoint-down-xl {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+@mixin media-breakpoint-down-xxl {
+  @media (max-width: 1399px) {
+    @content;
+  }
+}

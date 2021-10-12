@@ -1,0 +1,138 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--basic-white);
+}
+
+.wraper {
+  background-color: $header-bg-color;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 10px;
+  max-width: 1190px;
+}
+
+.header {
+  &__nav-list {
+    display: flex;
+    justify-content: center;
+    padding: 45px 0 51px;
+    @include media-breakpoint-down-lg {
+      padding: 41px 0 41px;
+    }
+    @include media-breakpoint-down-md {
+      flex-direction: column;
+      justify-content: start;
+      padding: 0;
+      background-color: $burger-bg-color;
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      display: none;
+      &:active {
+        background-color: $burger-bg-color-active;
+      }
+      &--open {
+        display: block;
+      }
+    }
+  }
+  &__burger {
+    display: none;
+    @include media-breakpoint-down-md {
+      margin-left: auto;
+      margin-bottom: 23px;
+      margin-top: 23px;
+      display: block;
+      width: 44px;
+      height: 37px;
+      background-color: $footer-bg-color;
+      position: relative;
+    }
+    &::before,
+    &::after {
+      content: '';
+    }
+    &::before {
+      bottom: 14px;
+    }
+    &::after {
+      top: 13px;
+    }
+    & span {
+      top: 17px;
+    }
+    & span,
+    &::before,
+    &::after {
+      left: 14px;
+      height: 2px;
+      width: 17px;
+      position: absolute;
+      background: white;
+      transition: 0.4s;
+      margin: 0 auto;
+    }
+    &--open {
+      & span {
+        opacity: 0;
+        transition: 0.5s;
+      }
+      &::before {
+        transform: rotate(45deg);
+        bottom: 17px;
+        transition: 0.4s;
+      }
+      &::after {
+        transform: rotate(-45deg);
+        top: 18px;
+        transition: 0.4s;
+      }
+    }
+  }
+  &__nav-item:not(:last-child) {
+    margin-right: 68px;
+    @include media-breakpoint-down-lg {
+      margin-right: 34px;
+    }
+    @include media-breakpoint-down-md {
+      margin-right: 0;
+    }
+  }
+  &__nav-link {
+    font-family: 'RobotoRegular';
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 22px;
+    color: $main-text-color;
+    display: block;
+    &:focus {
+      color: $header-active-color;
+    }
+    @include media-breakpoint-down-md {
+      &:hover {
+        background-color: $burger-bg-color-active;
+      }
+    }
+    @include media-breakpoint-down-md {
+      padding: 10px 135px 10px 12px;
+    }
+  }
+}

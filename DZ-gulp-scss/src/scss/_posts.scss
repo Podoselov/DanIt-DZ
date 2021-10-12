@@ -1,0 +1,78 @@
+.posts {
+  font-family: 'RobotoRegular';
+  &__heading {
+    color: $main-text-color;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    text-transform: uppercase;
+    padding: 57px 0 24px;
+    @include media-breakpoint-down-sm {
+      font-size: 14px;
+      line-height: 22px;
+      padding: 38px 0 23px;
+    }
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    @include media-breakpoint-down-sm {
+      flex-direction: column;
+    }
+  }
+  &__item {
+    display: flex;
+    margin-bottom: 32px;
+    @include media-breakpoint-down-sm {
+      flex-direction: column;
+    }
+  }
+  &__description {
+    max-width: 395px;
+    margin-left: 20px;
+    @include media-breakpoint-down-sm {
+      margin-left: 0;
+    }
+    &-name {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 30px;
+      color: $main-text-color;
+      @include media-breakpoint-down-sm {
+        font-size: 14px;
+      }
+    }
+    &-link {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 20px;
+      color: $post-link-color;
+      position: relative;
+      @include media-breakpoint-down-sm {
+        font-size: 11px;
+      }
+    }
+    &-link1 {
+      margin-right: 10px;
+      &::after {
+        content: '\2044';
+        position: absolute;
+        right: -10px;
+      }
+    }
+    &-text {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 26px;
+      color: $post-text-color;
+      @include media-breakpoint-down-sm {
+        display: none;
+      }
+    }
+  }
+}
