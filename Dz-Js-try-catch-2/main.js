@@ -10,14 +10,23 @@ class BooksList {
     let elArr = Array.from(arr);
     elArr.forEach((el) => {
       let elLi = document.createElement('li');
+      let { author, name, price } = el;
       try {
-        elLi.innerHTML = `${el.author} -  "${el.name}" - ${el.price}`;
-        if (!el.author || !el.name || !el.price) {
+        elLi.innerHTML = `${author} -  "${name}" - ${price}`;
+        if (!author || !name || !price) {
           throw new SyntaxError('Ошибка в данных');
         }
         elUl.append(elLi);
       } catch (er) {
-        console.log(el);
+        if (author === undefined) {
+          console.log(`Не хватает свойства author`);
+        }
+        if (name === undefined) {
+          console.log(`Не хватает свойства name`);
+        }
+        if (price === undefined) {
+          console.log(`Не хватает свойства price`);
+        }
       }
     });
     elDiv.append(elUl);
