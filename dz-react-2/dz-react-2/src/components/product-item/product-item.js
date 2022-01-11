@@ -9,10 +9,14 @@ const ItemComponent = styled.li`
   margin: 7px;
   padding: 0;
   background-color: #ffffff;
+  .item__header {
+    display: flex;
+    justify-content: space-between;
+  }
   div {
     padding: 5px 20px 10px;
     h2 {
-      font-size: 16px;
+      font-size: 18px;
       color: rgb(133, 133, 133);
       font-weight: bold;
       text-align: left;
@@ -31,8 +35,9 @@ const ItemComponent = styled.li`
       line-height: 1.385;
       margin-bottom: 10px;
     }
+
     .item__price {
-      font-size: 18px;
+      font-size: 26px;
       font-weight: bold;
       line-height: 1;
       margin: 5px 0;
@@ -72,14 +77,19 @@ function ProductItem({
   return (
     <ItemComponent>
       <img className='item__img' src={urlImg} alt='логотип' />
-      <div>
+      <div className='item__header'>
         <h2 className='item__heading'>{name}</h2>
         <AiOutlineStar
           onClick={changeStarColor}
           fill={favoritesAddStar ? 'yellow' : 'black'}
         />
-        <p className='item__idProduct'>{idProduct}</p>
-        <p className='item__color'>{color}</p>
+      </div>
+      <div>
+        <p className='item__idProduct'>
+          Product ID:
+          <span className='item__idProduct-name'> {idProduct}</span>
+        </p>
+        <p className='item__color'>Color: {color}</p>
         <div className='item__price-container'>
           <p className='item__price'>{price} $</p>
           <button
