@@ -1,0 +1,74 @@
+{
+  "cards": [
+    {
+      "name": "Oh my Deer",
+      "price": "123",
+      "urlImg": "./item-logo/item1.png",
+      "idProduct": "#2349939148",
+      "color": "Black"
+    },
+    {
+      "name": "Awaken the Hero",
+      "price": "231",
+      "urlImg": "./item-logo/item2.png",
+      "idProduct": "#2319929241",
+      "color": "Yellow"
+    },
+    {
+      "name": "Oh my Deer",
+      "price": "221",
+      "urlImg": "./item-logo/item3.png",
+      "idProduct": "#9219919249",
+      "color": "Red"
+    },
+    {
+      "name": "Ravenna",
+      "price": "222",
+      "urlImg": "./item-logo/item4.png",
+      "idProduct": "#9229211241",
+      "color": "White"
+    },
+    {
+      "name": "Caribou",
+      "price": "333",
+      "urlImg": "./item-logo/item5.png",
+      "idProduct": "#1459215245",
+      "color": "Black"
+    },
+    {
+      "name": "Aqualung",
+      "price": "322",
+      "urlImg": "./item-logo/item6.png",
+      "idProduct": "#1450210219",
+      "color": "Purple"
+    },
+    {
+      "name": "Strange to ears",
+      "price": "445",
+      "urlImg": "./item-logo/item7.png",
+      "idProduct": "#1650610266",
+      "color": "Black"
+    },
+    {
+      "name": "Ravenna",
+      "price": "422",
+      "urlImg": "./item-logo/item8.png",
+      "idProduct": "#2630410667",
+      "color": "Black"
+    },
+    {
+      "name": "Rav ears",
+      "price": "411",
+      "urlImg": "./item-logo/item4.png",
+      "idProduct": "#2611411167",
+      "color": "Purple"
+    },
+    {
+      "name": "Ears",
+      "price": "111",
+      "urlImg": "./item-logo/item3.png",
+      "idProduct": "#1611411187",
+      "color": "Gray"
+    }
+  ]
+}

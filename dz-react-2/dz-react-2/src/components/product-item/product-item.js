@@ -1,0 +1,115 @@
+import React, { useState, useEffect, useReducer } from 'react';
+import styled from 'styled-components';
+import { AiOutlineStar } from 'react-icons/ai';
+import PropTypes from 'prop-types';
+import useLocalStorage from '../localStorage/useLocalStorage.js';
+
+const ItemComponent = styled.li`
+  list-style: none;
+  margin: 7px;
+  padding: 0;
+  background-color: #ffffff;
+  div {
+    padding: 5px 20px 10px;
+    h2 {
+      font-size: 16px;
+      color: rgb(133, 133, 133);
+      font-weight: bold;
+      text-align: left;
+      padding-bottom: 10px;
+    }
+    svg {
+      margin-bottom: 10px;
+    }
+    div {
+      padding: 0;
+    }
+    p {
+      font-size: 13px;
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+      line-height: 1.385;
+      margin-bottom: 10px;
+    }
+    .item__price {
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 1;
+      margin: 5px 0;
+      &-container {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .item__button {
+      font-size: 10px;
+      color: rgb(255, 255, 255);
+      line-height: 1.8;
+      text-transform: uppercase;
+      border-radius: 8px;
+      background-color: rgb(30, 30, 32);
+      padding: 5px 6px;
+      cursor: pointer;
+    }
+  }
+`;
+
+function ProductItem({
+  name,
+  price,
+  urlImg,
+  idProduct,
+  color,
+  active,
+  setActive,
+}) {
+  const [favoritesAddStar, setStar] = useLocalStorage(idProduct);
+
+  const changeStarColor = () => {
+    favoritesAddStar ? setStar(false) : setStar(true);
+  };
+
+  return (
+    <ItemComponent>
+      <img className='item__img' src={urlImg} alt='логотип' />
+      <div>
+        <h2 className='item__heading'>{name}</h2>
+        <AiOutlineStar
+          onClick={changeStarColor}
+          fill={favoritesAddStar ? 'yellow' : 'black'}
+        />
+        <p className='item__idProduct'>{idProduct}</p>
+        <p className='item__color'>{color}</p>
+        <div className='item__price-container'>
+          <p className='item__price'>{price} $</p>
+          <button
+            onClick={() => {
+              setActive(true);
+            }}
+            className='item__button'
+          >
+            Add to Card
+          </button>
+        </div>
+      </div>
+    </ItemComponent>
+  );
+}
+
+ProductItem.defaultProps = {
+  name: 'Name',
+  price: 111,
+  urlImg: 'url',
+  idProduct: 1222223332,
+  color: 'black',
+};
+
+ProductItem.propTypes = {
+  name: PropTypes.string,
+  price: PropTypes.string,
+  urlImg: PropTypes.string,
+  idProduct: PropTypes.string,
+  color: PropTypes.string,
+};
+
+export default ProductItem;
