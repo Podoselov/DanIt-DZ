@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ProductList from './components/product-list/product-list.js';
 import styled, { createGlobalStyle } from 'styled-components';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const AppComponent = styled.div`
   min-width: 1200px;
@@ -40,10 +41,14 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   return (
-    <AppComponent>
-      <GlobalStyle />
-      <ProductList />
-    </AppComponent>
+    <Router>
+      <AppComponent>
+        <GlobalStyle />
+        <Routes>
+          <Route exact path='/' element={<ProductList />} />
+        </Routes>
+      </AppComponent>
+    </Router>
   );
 }
 

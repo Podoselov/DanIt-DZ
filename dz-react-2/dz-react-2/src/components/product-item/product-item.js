@@ -60,6 +60,7 @@ const ItemComponent = styled.li`
 `;
 
 function ProductItem({
+  id,
   name,
   price,
   urlImg,
@@ -70,8 +71,43 @@ function ProductItem({
 }) {
   const [favoritesAddStar, setStar] = useLocalStorage(idProduct);
 
-  const changeStarColor = () => {
-    favoritesAddStar ? setStar(false) : setStar(true);
+  const changeStarColor = async () => {
+    if (!favoritesAddStar) {
+      setStar(true);
+      await postFavoritesCard();
+    } else {
+      setStar(false);
+      await deleteFavoritesCard();
+    }
+  };
+
+  const deleteFavoritesCard = async () => {
+    const response = await fetch(
+      `http://localhost:5000/favorites/${idProduct}`,
+      {
+        method: 'DELETE',
+      }
+    );
+    return response;
+  };
+
+  const postFavoritesCard = async () => {
+    const response = await fetch('http://localhost:5000/favorites', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: idProduct,
+        name: name,
+        price: price,
+        urlImg: urlImg,
+        idProduct: idProduct,
+        color: color,
+      }),
+    });
+    const data = response.json();
+    return data;
   };
 
   return (

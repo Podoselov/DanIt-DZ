@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProductItem from '../product-item/product-item.js';
 import styled from 'styled-components';
 import ModalEl from '../modal/modalEl.js';
+import NavComponent from '../nav-component/navComponent.js';
 
 const ProductListComponent = styled.ul`
   display: flex;
@@ -20,9 +21,13 @@ function ProductList() {
   }, []);
 
   const fetchCards = async () => {
-    const response = await fetch('http://localhost:5000/cards');
-    const data = await response.json();
-    return data;
+    try {
+      const response = await fetch('http://localhost:5000/cards');
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return error;
+    }
   };
 
   const [modal, setModal] = useState(false);
@@ -33,8 +38,9 @@ function ProductList() {
 
   return (
     <>
+      <NavComponent />
       <ProductListComponent>
-        {cards.map(({ name, price, urlImg, idProduct, color }) => {
+        {cards.map(({ name, price, urlImg, idProduct, color, star }) => {
           return (
             <ProductItem
               key={idProduct}
@@ -45,6 +51,7 @@ function ProductList() {
               color={color}
               active={modal}
               setActive={setModal}
+              starColor={star}
             />
           );
         })}
