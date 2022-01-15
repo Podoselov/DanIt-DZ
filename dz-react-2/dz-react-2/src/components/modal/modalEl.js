@@ -25,6 +25,7 @@ const ModalContent = styled.div`
     background-color: rgb(42, 42, 46);
     padding: 26px 0 21px 29px;
     font-size: 22px;
+    text-align: center;
     svg {
       padding: 0;
       margin: 0 0 0 80px;

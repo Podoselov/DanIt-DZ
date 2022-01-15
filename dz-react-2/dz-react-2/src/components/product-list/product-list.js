@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import ProductItem from '../product-item/product-item.js';
+import ProductItem from '../product-item/Product-item.js';
 import styled from 'styled-components';
-import ModalEl from '../modal/modalEl.js';
-import NavComponent from '../nav-component/navComponent.js';
+import ModalEl from '../modal/ModalEl.js';
 
 const ProductListComponent = styled.ul`
   display: flex;
@@ -38,7 +37,6 @@ function ProductList() {
 
   return (
     <>
-      <NavComponent />
       <ProductListComponent>
         {cards.map(({ name, price, urlImg, idProduct, color, star }) => {
           return (

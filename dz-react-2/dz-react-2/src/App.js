@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import ProductList from './components/product-list/product-list.js';
+import ProductList from './components/product-list/Product-list.js';
 import styled, { createGlobalStyle } from 'styled-components';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Favorites from './components/favorites-component/Favorites.js';
+import NavComponent from './components/nav-component/NavComponent.js';
 
 const AppComponent = styled.div`
   min-width: 1200px;
@@ -44,8 +46,10 @@ function App() {
     <Router>
       <AppComponent>
         <GlobalStyle />
+        <NavComponent />
         <Routes>
           <Route exact path='/' element={<ProductList />} />
+          <Route path='/favorites' element={<Favorites />} />
         </Routes>
       </AppComponent>
     </Router>

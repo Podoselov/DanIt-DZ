@@ -2,7 +2,7 @@ import React, { useState, useEffect, useReducer } from 'react';
 import styled from 'styled-components';
 import { AiOutlineStar } from 'react-icons/ai';
 import PropTypes from 'prop-types';
-import useLocalStorage from '../localStorage/useLocalStorage.js';
+import useLocalStorage from '../localStorage/UseLocalStorage.js';
 
 const ItemComponent = styled.li`
   list-style: none;
