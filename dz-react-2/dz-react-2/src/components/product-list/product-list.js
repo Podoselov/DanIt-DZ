@@ -29,7 +29,7 @@ function ProductList() {
   return (
     <>
       <ProductListComponent>
-        {cards.map(({ name, price, urlImg, idProduct, color, star }) => {
+        {cards.map(({ name, price, urlImg, idProduct, color }) => {
           return (
             <ProductItem
               key={idProduct}
@@ -40,7 +40,6 @@ function ProductList() {
               color={color}
               active={modal}
               setActive={setModal}
-              starColor={star}
             />
           );
         })}

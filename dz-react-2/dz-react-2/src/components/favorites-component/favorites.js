@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import ProductItem from '../product-item/Product-item.js';
 import ModalEl from '../modal/ModalEl.js';
@@ -9,7 +9,7 @@ const ProductListComponent = styled.ul`
   flex-wrap: wrap;
 `;
 
-function Favorites() {
+function Favorites({}) {
   const [favoritesCards, setFavoritesCards] = useState([]);
   const [modal, setModal] = useState(false);
 
@@ -17,13 +17,14 @@ function Favorites() {
     modal ? setModal(false) : setModal(true);
   };
 
-  useEffect(() => {
-    const getCards = async () => {
-      const cardsServer = await FetchGet(`favorites`);
-      setFavoritesCards(cardsServer);
-    };
-    getCards();
+  const getUrl = useCallback(async () => {
+    const cardsServer = await FetchGet(`favorites`);
+    setFavoritesCards(cardsServer);
   }, []);
+
+  useEffect(() => {
+    getUrl();
+  }, [getUrl]);
 
   return (
     <>

@@ -48,8 +48,8 @@ function App() {
         <GlobalStyle />
         <NavComponent />
         <Routes>
-          <Route exact path='/' element={<ProductList />} />
-          <Route exact path='/favorites' element={<Favorites />} />
+          <Route path='/' exact='true' element={<ProductList />} />
+          <Route path='/favorites' exact='true' element={<Favorites />} />
         </Routes>
       </AppComponent>
     </Router>
