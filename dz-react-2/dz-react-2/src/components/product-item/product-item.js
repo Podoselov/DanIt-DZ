@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { AiOutlineStar } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import useLocalStorage from '../localStorage/UseLocalStorage.js';
+import FetchPost from '../../API/fetch-post/FetchPost.js';
+import DeleteFetch from '../../API/feth-delete/DeleteFetch.js';
 
 const ItemComponent = styled.li`
   list-style: none;
@@ -74,40 +76,11 @@ function ProductItem({
   const changeStarColor = async () => {
     if (!favoritesAddStar) {
       setStar(true);
-      await postFavoritesCard();
+      await FetchPost(`favorites`, id, name, price, urlImg, idProduct, color);
     } else {
       setStar(false);
-      await deleteFavoritesCard();
+      await DeleteFetch(idProduct);
     }
-  };
-
-  const deleteFavoritesCard = async () => {
-    const response = await fetch(
-      `http://localhost:5000/favorites/${idProduct}`,
-      {
-        method: 'DELETE',
-      }
-    );
-    return response;
-  };
-
-  const postFavoritesCard = async () => {
-    const response = await fetch('http://localhost:5000/favorites', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: idProduct,
-        name: name,
-        price: price,
-        urlImg: urlImg,
-        idProduct: idProduct,
-        color: color,
-      }),
-    });
-    const data = response.json();
-    return data;
   };
 
   return (

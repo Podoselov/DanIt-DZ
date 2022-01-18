@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ProductItem from '../product-item/Product-item.js';
 import ModalEl from '../modal/ModalEl.js';
+import FetchGet from '../../API/fetch-get/FetchGet.js';
 
 const ProductListComponent = styled.ul`
   display: flex;
@@ -18,21 +19,11 @@ function Favorites() {
 
   useEffect(() => {
     const getCards = async () => {
-      const cardsServer = await cardsFromServer();
+      const cardsServer = await FetchGet(`favorites`);
       setFavoritesCards(cardsServer);
     };
     getCards();
-  }, [favoritesCards]);
-
-  const cardsFromServer = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/favorites');
-      const cardsRespons = await response.json();
-      return cardsRespons;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  }, []);
 
   return (
     <>

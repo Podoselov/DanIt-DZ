@@ -16,7 +16,7 @@ function Buy() {
       setBuyCards(cardsServer);
     };
     getCards();
-  }, []);
+  }, [buyCards]);
 
   const cardsFromServer = async () => {
     try {

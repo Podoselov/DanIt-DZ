@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProductItem from '../product-item/Product-item.js';
 import styled from 'styled-components';
 import ModalEl from '../modal/ModalEl.js';
+import FetchGet from '../../API/fetch-get/FetchGet.js';
 
 const ProductListComponent = styled.ul`
   display: flex;
@@ -13,21 +14,11 @@ function ProductList() {
 
   useEffect(() => {
     const getCards = async () => {
-      const cardsFromServer = await fetchCards();
+      const cardsFromServer = await FetchGet(`cards`);
       setCards(cardsFromServer);
     };
     getCards();
   }, []);
-
-  const fetchCards = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/cards');
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      return error;
-    }
-  };
 
   const [modal, setModal] = useState(false);
 

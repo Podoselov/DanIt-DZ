@@ -49,7 +49,7 @@ function App() {
         <NavComponent />
         <Routes>
           <Route exact path='/' element={<ProductList />} />
-          <Route path='/favorites' element={<Favorites />} />
+          <Route exact path='/favorites' element={<Favorites />} />
         </Routes>
       </AppComponent>
     </Router>
