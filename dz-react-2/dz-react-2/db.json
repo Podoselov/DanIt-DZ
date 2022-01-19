@@ -82,13 +82,22 @@
       "color": "Yellow"
     },
     {
-      "id": "9229211241",
-      "name": "Ravenna",
-      "price": "222",
-      "urlImg": "./item-logo/item4.png",
-      "idProduct": "9229211241",
-      "color": "White"
+      "id": "2349939148",
+      "name": "Oh my Deer",
+      "price": "123",
+      "urlImg": "./item-logo/item1.png",
+      "idProduct": "2349939148",
+      "color": "Black"
     }
   ],
-  "buy": []
+  "buy": [
+    {
+      "id": "2349939148",
+      "name": "Oh my Deer",
+      "price": "123",
+      "urlImg": "./item-logo/item1.png",
+      "idProduct": "2349939148",
+      "color": "Black"
+    }
+  ]
 }

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import useLocalStorage from '../localStorage/UseLocalStorage.js';
 import FetchPost from '../../API/fetch-post/FetchPost.js';
 import DeleteFetch from '../../API/feth-delete/DeleteFetch.js';
+import Context from '../../context/context.js';
 
 const ItemComponent = styled.li`
   list-style: none;
@@ -68,8 +69,8 @@ function ProductItem({
   urlImg,
   idProduct,
   color,
-  active,
-  setActive,
+  btnText,
+  addToCard,
 }) {
   const [favoritesAddStar, setStar] = useLocalStorage(idProduct);
 
@@ -101,13 +102,8 @@ function ProductItem({
         <p className='item__color'>Color: {color}</p>
         <div className='item__price-container'>
           <p className='item__price'>{price} $</p>
-          <button
-            onClick={() => {
-              setActive(true);
-            }}
-            className='item__button'
-          >
-            Add to Card
+          <button onClick={addToCard} className='item__button'>
+            {btnText}
           </button>
         </div>
       </div>

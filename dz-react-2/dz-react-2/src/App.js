@@ -4,6 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Favorites from './components/favorites-component/Favorites.js';
 import NavComponent from './components/nav-component/NavComponent.js';
+import Buy from './components/buy-component/Buy.js';
 
 const AppComponent = styled.div`
   min-width: 1200px;
@@ -50,6 +51,7 @@ function App() {
         <Routes>
           <Route path='/' exact='true' element={<ProductList />} />
           <Route path='/favorites' exact='true' element={<Favorites />} />
+          <Route path='/buy' exact='true' element={<Buy />} />
         </Routes>
       </AppComponent>
     </Router>
