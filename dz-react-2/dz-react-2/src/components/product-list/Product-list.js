@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import ModalEl from '../modal/ModalEl.js';
 import FetchGet from '../../API/fetch-get/FetchGet.js';
 import FetchPost from '../../API/fetch-post/FetchPost.js';
-import Context from '../../context/context.js';
 
 const ProductListComponent = styled.ul`
   display: flex;
