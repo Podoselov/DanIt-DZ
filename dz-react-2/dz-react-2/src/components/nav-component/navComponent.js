@@ -19,7 +19,7 @@ const NavComponent = styled.nav`
   }
 `;
 
-function navComponent() {
+function NavComponent() {
   return (
     <NavComponent className='page__nav'>
       <ul className='nav__list'>
@@ -39,4 +39,4 @@ function navComponent() {
   );
 }
 
-export default navComponent;
+export default NavComponent;
