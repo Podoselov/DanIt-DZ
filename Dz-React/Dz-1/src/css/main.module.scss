@@ -1,0 +1,11 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+  max-width: 1200px;
+  &Button {
+    display: flex;
+    justify-content: center;
+  }
+}
