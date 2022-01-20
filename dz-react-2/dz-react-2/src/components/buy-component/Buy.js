@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import ProductItem from '../product-item/Product-item.js';
 import ModalEl from '../modal/ModalEl.js';
 import FetchGet from '../../API/fetch-get/FetchGet.js';
-import DeleteFetch from '../../API/feth-delete/DeleteFetch.js';
 
 const ProductListComponent = styled.ul`
   display: flex;

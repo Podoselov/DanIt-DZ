@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const NavComponent = styled.nav`
+const NavComponentStyle = styled.nav`
   border: 1px solid #e7e7e7;
   background-color: #f3f3f3;
   .nav__list {
@@ -21,7 +21,7 @@ const NavComponent = styled.nav`
 
 function NavComponent() {
   return (
-    <NavComponent className='page__nav'>
+    <NavComponentStyle className='page__nav'>
       <ul className='nav__list'>
         <li className='nav__item'>
           <Link exact to='/'>
@@ -35,7 +35,7 @@ function NavComponent() {
           <Link to='/buy'>BUY</Link>
         </li>
       </ul>
-    </NavComponent>
+    </NavComponentStyle>
   );
 }
 

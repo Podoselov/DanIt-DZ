@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ProductList from './components/product-list/Product-list.js';
 import styled, { createGlobalStyle } from 'styled-components';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
