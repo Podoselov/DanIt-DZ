@@ -8,6 +8,16 @@ import FetchPost from '../../API/fetch-post/FetchPost.js';
 const ProductListComponent = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  .item__button {
+    font-size: 10px;
+    color: rgb(255, 255, 255);
+    line-height: 1.8;
+    text-transform: uppercase;
+    border-radius: 8px;
+    background-color: rgb(30, 30, 32);
+    padding: 5px 6px;
+    cursor: pointer;
+  }
 `;
 
 function Favorites() {
@@ -34,6 +44,14 @@ function Favorites() {
     getUrl();
   }, [getUrl]);
 
+  const removeCard = (idProduct) => {
+    setFavoritesCards(
+      favoritesCards.filter(({ id }) => {
+        return id !== idProduct;
+      })
+    );
+  };
+
   return (
     <>
       <ProductListComponent>
@@ -48,7 +66,9 @@ function Favorites() {
               color={color}
               active={modal}
               setActive={setModal}
+              favoritesCard={removeCard}
               btnText='Add to card'
+              classNameButton='item__button'
               addToCard={() => {
                 modal ? setModal(false) : setModal(true);
                 setCard({

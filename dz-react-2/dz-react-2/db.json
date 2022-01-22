@@ -80,24 +80,7 @@
       "urlImg": "./item-logo/item2.png",
       "idProduct": "2319929241",
       "color": "Yellow"
-    },
-    {
-      "id": "2349939148",
-      "name": "Oh my Deer",
-      "price": "123",
-      "urlImg": "./item-logo/item1.png",
-      "idProduct": "2349939148",
-      "color": "Black"
     }
   ],
-  "buy": [
-    {
-      "id": "2349939148",
-      "name": "Oh my Deer",
-      "price": "123",
-      "urlImg": "./item-logo/item1.png",
-      "idProduct": "2349939148",
-      "color": "Black"
-    }
-  ]
+  "buy": []
 }

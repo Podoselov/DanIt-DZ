@@ -1,16 +1,17 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { AiOutlineStar } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import useLocalStorage from '../localStorage/UseLocalStorage.js';
 import FetchPost from '../../API/fetch-post/FetchPost.js';
 import DeleteFetch from '../../API/feth-delete/DeleteFetch.js';
-import Context from '../../context/context.js';
+import Button from '../button-component/Button.js';
 
 const ItemComponent = styled.li`
   list-style: none;
   margin: 7px;
   padding: 0;
+  position: relative;
   background-color: #ffffff;
   .item__header {
     display: flex;
@@ -49,16 +50,6 @@ const ItemComponent = styled.li`
         justify-content: space-between;
       }
     }
-    .item__button {
-      font-size: 10px;
-      color: rgb(255, 255, 255);
-      line-height: 1.8;
-      text-transform: uppercase;
-      border-radius: 8px;
-      background-color: rgb(30, 30, 32);
-      padding: 5px 6px;
-      cursor: pointer;
-    }
   }
 `;
 
@@ -71,6 +62,8 @@ function ProductItem({
   color,
   btnText,
   addToCard,
+  classNameButton,
+  favoritesCard,
 }) {
   const [favoritesAddStar, setStar] = useLocalStorage(idProduct);
 
@@ -80,7 +73,8 @@ function ProductItem({
       await FetchPost(`favorites`, id, name, price, urlImg, idProduct, color);
     } else {
       setStar(false);
-      await DeleteFetch(idProduct);
+      await DeleteFetch('favorites', idProduct);
+      favoritesCard(idProduct);
     }
   };
 
@@ -102,9 +96,11 @@ function ProductItem({
         <p className='item__color'>Color: {color}</p>
         <div className='item__price-container'>
           <p className='item__price'>{price} $</p>
-          <button onClick={addToCard} className='item__button'>
-            {btnText}
-          </button>
+          <Button
+            classNameEl={classNameButton}
+            handlClick={addToCard}
+            text={btnText}
+          />
         </div>
       </div>
     </ItemComponent>

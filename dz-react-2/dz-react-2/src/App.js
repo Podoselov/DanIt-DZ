@@ -49,9 +49,9 @@ function App() {
         <GlobalStyle />
         <NavComponent />
         <Routes>
-          <Route path='/' exact='true' element={<ProductList />} />
-          <Route path='/favorites' exact='true' element={<Favorites />} />
-          <Route path='/buy' exact='true' element={<Buy />} />
+          <Route path='/' exact element={<ProductList />} />
+          <Route path='/favorites' element={<Favorites />} />
+          <Route path='/buy' element={<Buy />} />
         </Routes>
       </AppComponent>
     </Router>

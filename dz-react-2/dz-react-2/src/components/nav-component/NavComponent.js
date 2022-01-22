@@ -24,9 +24,7 @@ function NavComponent() {
     <NavComponentStyle className='page__nav'>
       <ul className='nav__list'>
         <li className='nav__item'>
-          <Link exact to='/'>
-            PRODUCTS
-          </Link>
+          <Link to='/'>PRODUCTS</Link>
         </li>
         <li className='nav__item'>
           <Link to='/favorites'>FAVORITES</Link>

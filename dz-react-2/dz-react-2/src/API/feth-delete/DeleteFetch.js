@@ -1,5 +1,5 @@
-const deleteFavoritesCard = async (idProduct) => {
-  const response = await fetch(`http://localhost:5000/favorites/${idProduct}`, {
+const deleteFavoritesCard = async (path, idProduct) => {
+  const response = await fetch(`http://localhost:5000/${path}/${idProduct}`, {
     method: 'DELETE',
   });
   return response;
