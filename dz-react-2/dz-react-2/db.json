@@ -74,13 +74,22 @@
   ],
   "favorites": [
     {
-      "id": "2319929241",
-      "name": "Awaken the Hero",
-      "price": "231",
-      "urlImg": "./item-logo/item2.png",
-      "idProduct": "2319929241",
-      "color": "Yellow"
+      "id": "9229211241",
+      "name": "Ravenna",
+      "price": "222",
+      "urlImg": "./item-logo/item4.png",
+      "idProduct": "9229211241",
+      "color": "White"
     }
   ],
-  "buy": []
+  "buy": [
+    {
+      "id": "9219919249",
+      "name": "Oh my Deer",
+      "price": "221",
+      "urlImg": "./item-logo/item3.png",
+      "idProduct": "9219919249",
+      "color": "Red"
+    }
+  ]
 }

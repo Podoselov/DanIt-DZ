@@ -74,7 +74,9 @@ function ProductItem({
     } else {
       setStar(false);
       await DeleteFetch('favorites', idProduct);
-      favoritesCard(idProduct);
+      if (favoritesCard) {
+        favoritesCard(idProduct);
+      }
     }
   };
 

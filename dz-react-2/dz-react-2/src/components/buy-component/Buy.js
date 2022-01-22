@@ -25,6 +25,14 @@ function Buy() {
   const [modal, setModal] = useState(false);
   const [card, setRemoveCard] = useState([]);
 
+  useEffect(() => {
+    const getCards = async () => {
+      const cardsServer = await FetchGet('buy');
+      setBuyCards(cardsServer);
+    };
+    getCards();
+  }, []);
+
   const clickCancel = () => {
     modal ? setModal(false) : setModal(true);
   };
@@ -43,14 +51,6 @@ function Buy() {
       })
     );
   };
-
-  useEffect(() => {
-    const getCards = async () => {
-      const cardsServer = await FetchGet('buy');
-      setBuyCards(cardsServer);
-    };
-    getCards();
-  }, []);
 
   return (
     <>
