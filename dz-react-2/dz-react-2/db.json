@@ -5,21 +5,27 @@
       "price": "123",
       "urlImg": "./item-logo/item1.png",
       "idProduct": "2349939148",
-      "color": "Black"
+      "color": "Black",
+      "favorites": false,
+      "buy": false
     },
     {
       "name": "Awaken the Hero",
       "price": "231",
       "urlImg": "./item-logo/item2.png",
       "idProduct": "2319929241",
-      "color": "Yellow"
+      "color": "Yellow",
+      "favorites": false,
+      "buy": false
     },
     {
       "name": "Oh my Deer",
       "price": "221",
       "urlImg": "./item-logo/item3.png",
       "idProduct": "9219919249",
-      "color": "Red"
+      "color": "Red",
+      "favorites": false,
+      "buy": false
     },
     {
       "name": "Ravenna",
@@ -27,69 +33,62 @@
       "urlImg": "./item-logo/item4.png",
       "idProduct": "9229211241",
       "color": "White",
-      "star": "false"
+      "favorites": false,
+      "buy": false
     },
     {
       "name": "Caribou",
       "price": "333",
       "urlImg": "./item-logo/item5.png",
       "idProduct": "1459215245",
-      "color": "Black"
+      "color": "Black",
+      "favorites": false,
+      "buy": false
     },
     {
       "name": "Aqualung",
       "price": "322",
       "urlImg": "./item-logo/item6.png",
       "idProduct": "1450210219",
-      "color": "Purple"
+      "color": "Purple",
+      "favorites": false,
+      "buy": false
     },
     {
       "name": "Strange to ears",
       "price": "445",
       "urlImg": "./item-logo/item7.png",
       "idProduct": "1650610266",
-      "color": "Black"
+      "color": "Black",
+      "favorites": false,
+      "buy": false
     },
     {
       "name": "Ravenna",
       "price": "422",
       "urlImg": "./item-logo/item8.png",
       "idProduct": "2630410667",
-      "color": "Black"
+      "color": "Black",
+      "favorites": false,
+      "buy": false
     },
     {
       "name": "Rav ears",
       "price": "411",
       "urlImg": "./item-logo/item4.png",
       "idProduct": "2611411167",
-      "color": "Purple"
+      "color": "Purple",
+      "favorites": false,
+      "buy": false
     },
     {
       "name": "Ears",
       "price": "111",
       "urlImg": "./item-logo/item3.png",
       "idProduct": "1611411187",
-      "color": "Gray"
-    }
-  ],
-  "favorites": [
-    {
-      "id": "9229211241",
-      "name": "Ravenna",
-      "price": "222",
-      "urlImg": "./item-logo/item4.png",
-      "idProduct": "9229211241",
-      "color": "White"
-    }
-  ],
-  "buy": [
-    {
-      "id": "9219919249",
-      "name": "Oh my Deer",
-      "price": "221",
-      "urlImg": "./item-logo/item3.png",
-      "idProduct": "9219919249",
-      "color": "Red"
+      "color": "Gray",
+      "favorites": false,
+      "buy": false
     }
   ]
 }

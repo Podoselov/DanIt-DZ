@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { AiOutlineStar } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import useLocalStorage from '../localStorage/UseLocalStorage.js';
-import FetchPost from '../../API/fetch-post/FetchPost.js';
-import DeleteFetch from '../../API/feth-delete/DeleteFetch.js';
 import Button from '../button-component/Button.js';
+import { useDispatch } from 'react-redux';
+import { removeColorStar, addColorStar } from '../../store/actions.js';
 
 const ItemComponent = styled.li`
   list-style: none;
@@ -63,25 +63,22 @@ function ProductItem({
   btnText,
   addToCard,
   classNameButton,
-  favoritesCard,
 }) {
   const [favoritesAddStar, setStar] = useLocalStorage(idProduct);
+  const dispatch = useDispatch();
 
-  const changeStarColor = async () => {
+  const changeStarColor = () => {
     if (!favoritesAddStar) {
       setStar(true);
-      await FetchPost(`favorites`, id, name, price, urlImg, idProduct, color);
+      dispatch(addColorStar(idProduct));
     } else {
       setStar(false);
-      await DeleteFetch('favorites', idProduct);
-      if (favoritesCard) {
-        favoritesCard(idProduct);
-      }
+      dispatch(removeColorStar(idProduct));
     }
   };
 
   return (
-    <ItemComponent>
+    <ItemComponent key={idProduct}>
       <img className='item__img' src={urlImg} alt='логотип' />
       <div className='item__header'>
         <h2 className='item__heading'>{name}</h2>

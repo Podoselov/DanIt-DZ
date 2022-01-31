@@ -1,9 +1,13 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ProductItem from '../product-item/Product-item.js';
 import ModalEl from '../modal/ModalEl.js';
-import FetchGet from '../../API/fetch-get/FetchGet.js';
-import FetchPost from '../../API/fetch-post/FetchPost.js';
+import ProductItem from '../product-item/Product-item.js';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getFavoritesCards,
+  getBuyCards,
+  modalOpen,
+} from '../../store/actions.js';
 
 const ProductListComponent = styled.ul`
   display: flex;
@@ -21,68 +25,65 @@ const ProductListComponent = styled.ul`
 `;
 
 function Favorites() {
-  const [favoritesCards, setFavoritesCards] = useState([]);
   const [modal, setModal] = useState(false);
   const [card, setCard] = useState([]);
+  const dispatch = useDispatch();
+  const stateFavoritesCards = useSelector((state) =>
+    state.cards.all.filter(({ favorites }) => favorites)
+  );
 
   const clickAddToCard = () => {
-    const { id, name, price, urlImg, idProduct, color } = card;
     modal ? setModal(false) : setModal(true);
-    FetchPost('buy', id, name, price, urlImg, idProduct, color);
+    dispatch(getBuyCards(card));
+    dispatch(modalOpen(false));
   };
 
   const clickCancel = () => {
     modal ? setModal(false) : setModal(true);
+    dispatch(modalOpen(false));
   };
 
   const getUrl = useCallback(async () => {
-    const cardsServer = await FetchGet(`favorites`);
-    setFavoritesCards(cardsServer);
-  }, []);
+    dispatch(getFavoritesCards(stateFavoritesCards));
+  }, [stateFavoritesCards]);
 
   useEffect(() => {
     getUrl();
   }, [getUrl]);
 
   const removeCard = (idProduct) => {
-    setFavoritesCards(
-      favoritesCards.filter(({ id }) => {
-        return id !== idProduct;
-      })
-    );
+    stateFavoritesCards.filter(({ id }) => {
+      return id !== idProduct;
+    });
   };
 
   return (
     <>
       <ProductListComponent>
-        {favoritesCards.map(({ name, price, urlImg, idProduct, color }) => {
-          return (
-            <ProductItem
-              key={idProduct}
-              name={name}
-              price={price}
-              urlImg={urlImg}
-              idProduct={idProduct}
-              color={color}
-              active={modal}
-              setActive={setModal}
-              favoritesCard={removeCard}
-              btnText='Add to card'
-              classNameButton='item__button'
-              addToCard={() => {
-                modal ? setModal(false) : setModal(true);
-                setCard({
-                  id: idProduct,
-                  name: name,
-                  price: price,
-                  urlImg: urlImg,
-                  idProduct: idProduct,
-                  color: color,
-                });
-              }}
-            />
-          );
-        })}
+        {stateFavoritesCards.map(
+          ({ name, price, urlImg, idProduct, color }) => {
+            return (
+              <ProductItem
+                key={idProduct}
+                name={name}
+                price={price}
+                urlImg={urlImg}
+                idProduct={idProduct}
+                color={color}
+                active={modal}
+                setActive={setModal}
+                favoritesCard={removeCard}
+                btnText='Add to card'
+                classNameButton='item__button'
+                addToCard={() => {
+                  modal ? setModal(false) : setModal(true);
+                  dispatch(modalOpen(true));
+                  setCard(idProduct);
+                }}
+              />
+            );
+          }
+        )}
       </ProductListComponent>
       <ModalEl
         active={modal}

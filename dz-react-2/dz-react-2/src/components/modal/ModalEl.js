@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { modalOpen } from '../../store/actions.js';
 
 const ModalBlock = styled.div`
   position: fixed;
@@ -53,10 +55,13 @@ const ModalEl = ({
   active,
   setActive,
 }) => {
+  const dispatch = useDispatch();
+
   return (
     <ModalBlock
       onClick={() => {
         setActive(false);
+        dispatch(modalOpen(false));
       }}
       style={active ? { display: 'block' } : { display: 'none' }}
     >
@@ -71,6 +76,7 @@ const ModalEl = ({
             <FaTimes
               onClick={() => {
                 setActive(false);
+                dispatch(modalOpen(false));
               }}
             ></FaTimes>
           ) : null}

@@ -5,6 +5,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Favorites from './components/favorites-component/Favorites.js';
 import NavComponent from './components/nav-component/NavComponent.js';
 import Buy from './components/buy-component/Buy.js';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './store/reducer.js';
+import thunk from 'redux-thunk';
 
 const AppComponent = styled.div`
   min-width: 1200px;
@@ -42,19 +46,30 @@ const GlobalStyle = createGlobalStyle`
  }
 `;
 
+const composeEnhancers =
+  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+    : compose;
+
+const enhancer = composeEnhancers(applyMiddleware(thunk));
+
+const store = createStore(reducer, enhancer);
+
 function App() {
   return (
-    <Router>
-      <AppComponent>
-        <GlobalStyle />
-        <NavComponent />
-        <Routes>
-          <Route path='/' exact element={<ProductList />} />
-          <Route path='/favorites' element={<Favorites />} />
-          <Route path='/buy' element={<Buy />} />
-        </Routes>
-      </AppComponent>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <AppComponent>
+          <GlobalStyle />
+          <NavComponent />
+          <Routes>
+            <Route path='/' element={<ProductList />} />
+            <Route path='/favorites' element={<Favorites />} />
+            <Route path='/buy' element={<Buy />} />
+          </Routes>
+        </AppComponent>
+      </Router>
+    </Provider>
   );
 }
 

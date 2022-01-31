@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ProductItem from '../product-item/Product-item.js';
 import ModalEl from '../modal/ModalEl.js';
-import FetchGet from '../../API/fetch-get/FetchGet.js';
-import DeleteFetch from '../../API/feth-delete/DeleteFetch.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteBuyCards, modalOpen } from '../../store/actions.js';
 
 const ProductListComponent = styled.ul`
   display: flex;
@@ -21,62 +21,47 @@ const ProductListComponent = styled.ul`
 `;
 
 function Buy() {
-  const [buyCards, setBuyCards] = useState([]);
   const [modal, setModal] = useState(false);
   const [card, setRemoveCard] = useState([]);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const getCards = async () => {
-      const cardsServer = await FetchGet('buy');
-      setBuyCards(cardsServer);
-    };
-    getCards();
-  }, []);
+  const stateBuyCards = useSelector((state) =>
+    state.cards.all.filter(({ buy }) => buy)
+  );
 
   const clickCancel = () => {
     modal ? setModal(false) : setModal(true);
+    dispatch(modalOpen(false));
   };
 
   const clickModalButton = () => {
     modal ? setModal(false) : setModal(true);
-    const { id } = card;
-    DeleteFetch('buy', id);
-    removeCard(id);
-  };
-
-  const removeCard = (idProduct) => {
-    setBuyCards(
-      buyCards.filter(({ id }) => {
-        return id !== idProduct;
-      })
-    );
+    dispatch(deleteBuyCards(card));
+    dispatch(modalOpen(false));
   };
 
   return (
     <>
       <ProductListComponent>
-        {buyCards.map(({ name, price, urlImg, idProduct, color }) => {
+        {stateBuyCards.map(({ name, price, urlImg, idProduct, color }) => {
           return (
-            <>
-              <ProductItem
-                key={idProduct}
-                name={name}
-                price={price}
-                urlImg={urlImg}
-                idProduct={idProduct}
-                color={color}
-                active={modal}
-                setActive={setModal}
-                btnText='X'
-                classNameButton='close__button'
-                addToCard={() => {
-                  modal ? setModal(false) : setModal(true);
-                  setRemoveCard({
-                    id: idProduct,
-                  });
-                }}
-              />
-            </>
+            <ProductItem
+              key={idProduct}
+              name={name}
+              price={price}
+              urlImg={urlImg}
+              idProduct={idProduct}
+              color={color}
+              active={modal}
+              setActive={setModal}
+              btnText='X'
+              classNameButton='close__button'
+              addToCard={() => {
+                modal ? setModal(false) : setModal(true);
+                dispatch(modalOpen(true));
+                setRemoveCard(idProduct);
+              }}
+            />
           );
         })}
       </ProductListComponent>
