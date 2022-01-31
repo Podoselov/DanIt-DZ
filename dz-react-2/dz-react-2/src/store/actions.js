@@ -7,6 +7,7 @@ import {
   STARS_COLOR_REMOVE,
   MODAL_OPEN,
 } from './actionsType';
+import FetchGet from '../API/fetch-get/FetchGet.js';
 
 export function modalOpen(state) {
   return (dispatch) => {
@@ -17,12 +18,16 @@ export function modalOpen(state) {
   };
 }
 
-export function getAllCards(cards) {
-  return (dispatch) => {
-    dispatch({
-      type: CARDS,
-      payload: cards,
-    });
+export function getAllCards() {
+  return async (dispatch, getState) => {
+    const { cards } = getState();
+    if (cards.all.length === 0) {
+      const cardsFromServer = await FetchGet(`cards`);
+      dispatch({
+        type: CARDS,
+        payload: cardsFromServer,
+      });
+    }
   };
 }
 export function getBuyCards(card) {

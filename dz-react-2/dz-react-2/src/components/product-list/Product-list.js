@@ -28,8 +28,7 @@ function ProductList() {
   const stateCards = useSelector((state) => state.cards.all);
 
   const getCards = useCallback(async () => {
-    const cardsFromServer = await FetchGet(`cards`);
-    dispatch(getAllCards(cardsFromServer));
+    dispatch(getAllCards());
   }, []);
 
   useEffect(() => {
