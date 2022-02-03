@@ -7,8 +7,10 @@ import NavComponent from './components/nav-component/NavComponent.js';
 import Buy from './components/buy-component/Buy.js';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './store/reducer.js';
+import persistedReducer from './store/reducer.js';
 import thunk from 'redux-thunk';
+import persistStore from 'redux-persist/es/persistStore';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const AppComponent = styled.div`
   min-width: 1200px;
@@ -53,22 +55,25 @@ const composeEnhancers =
 
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 
-const store = createStore(reducer, enhancer);
+const store = createStore(persistedReducer, enhancer);
+const persistor = persistStore(store);
 
 function App() {
   return (
     <Provider store={store}>
-      <Router>
-        <AppComponent>
-          <GlobalStyle />
-          <NavComponent />
-          <Routes>
-            <Route path='/' element={<ProductList />} />
-            <Route path='/favorites' element={<Favorites />} />
-            <Route path='/buy' element={<Buy />} />
-          </Routes>
-        </AppComponent>
-      </Router>
+      <PersistGate loading={null} persistor={persistor}>
+        <Router>
+          <AppComponent>
+            <GlobalStyle />
+            <NavComponent />
+            <Routes>
+              <Route path='/' element={<ProductList />} />
+              <Route path='/favorites' element={<Favorites />} />
+              <Route path='/buy' element={<Buy />} />
+            </Routes>
+          </AppComponent>
+        </Router>
+      </PersistGate>
     </Provider>
   );
 }

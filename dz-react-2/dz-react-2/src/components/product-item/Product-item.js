@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { AiOutlineStar } from 'react-icons/ai';
 import PropTypes from 'prop-types';
-import useLocalStorage from '../localStorage/UseLocalStorage.js';
 import Button from '../button-component/Button.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeColorStar, addColorStar } from '../../store/actions.js';
 
 const ItemComponent = styled.li`
@@ -64,15 +63,17 @@ function ProductItem({
   addToCard,
   classNameButton,
 }) {
-  const [favoritesAddStar, setStar] = useLocalStorage(idProduct);
+  const favoritesCards = useSelector((state) => state.cards.all);
   const dispatch = useDispatch();
 
+  const isFavorites = favoritesCards.some(
+    (element) => element.idProduct === idProduct && element.favorites === true
+  );
+
   const changeStarColor = () => {
-    if (!favoritesAddStar) {
-      setStar(true);
+    if (!isFavorites) {
       dispatch(addColorStar(idProduct));
     } else {
-      setStar(false);
       dispatch(removeColorStar(idProduct));
     }
   };
@@ -84,7 +85,7 @@ function ProductItem({
         <h2 className='item__heading'>{name}</h2>
         <AiOutlineStar
           onClick={changeStarColor}
-          fill={favoritesAddStar ? 'yellow' : 'black'}
+          fill={isFavorites ? 'yellow' : 'black'}
         />
       </div>
       <div>
