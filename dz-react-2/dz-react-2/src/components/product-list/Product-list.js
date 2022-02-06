@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import ProductItem from '../product-item/Product-item.js';
 import styled from 'styled-components';
 import ModalEl from '../modal/ModalEl.js';
-import FetchGet from '../../API/fetch-get/FetchGet.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCards, getBuyCards, modalOpen } from '../../store/actions.js';
 

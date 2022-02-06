@@ -4,6 +4,7 @@ import {
   BUY,
   STARS_COLOR_ADD,
   STARS_COLOR_REMOVE,
+  BUY_CARDS,
 } from './actionsType';
 
 const defaultState = {
@@ -48,6 +49,13 @@ export default function cardsReduser(state = defaultState, action) {
           element.idProduct === action.payload
             ? { ...element, buy: false }
             : element
+        ),
+      };
+    case BUY_CARDS:
+      return {
+        ...state,
+        all: state.all.map((element) =>
+          element.buy ? { ...element, buy: false } : element
         ),
       };
     default:

@@ -11,3 +11,5 @@ export const STARS_COLOR_ADD = 'STARS_COLOR_ADD';
 export const STARS_COLOR_REMOVE = 'STARS_COLOR_REMOVE';
 
 export const MODAL_OPEN = 'MODAL_OPEN';
+
+export const BUY_CARDS = 'BUY_CARDS';

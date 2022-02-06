@@ -6,6 +6,7 @@ import {
   STARS_COLOR_ADD,
   STARS_COLOR_REMOVE,
   MODAL_OPEN,
+  BUY_CARDS,
 } from './actionsType';
 import FetchGet from '../API/fetch-get/FetchGet.js';
 
@@ -69,6 +70,15 @@ export function removeColorStar(idProduct) {
     dispatch({
       type: STARS_COLOR_REMOVE,
       payload: idProduct,
+    });
+  };
+}
+
+export function buyCards(cards) {
+  return (dispatch) => {
+    dispatch({
+      type: BUY_CARDS,
+      payload: cards,
     });
   };
 }

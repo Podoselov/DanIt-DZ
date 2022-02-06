@@ -4,6 +4,7 @@ import ProductItem from '../product-item/Product-item.js';
 import ModalEl from '../modal/ModalEl.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteBuyCards, modalOpen } from '../../store/actions.js';
+import BuyForm from '../form/form.js';
 
 const ProductListComponent = styled.ul`
   display: flex;
@@ -42,6 +43,7 @@ function Buy() {
 
   return (
     <>
+      <BuyForm />
       <ProductListComponent>
         {stateBuyCards.map(({ name, price, urlImg, idProduct, color }) => {
           return (
