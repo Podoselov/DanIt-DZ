@@ -21,6 +21,12 @@ const ProductListComponent = styled.ul`
   }
 `;
 
+const HedingBuyComponent = styled.h1`
+  color: white;
+  text-align: center;
+  padding: 20px;
+`;
+
 function Buy() {
   const [modal, setModal] = useState(false);
   const [card, setRemoveCard] = useState([]);
@@ -43,47 +49,53 @@ function Buy() {
 
   return (
     <>
-      <BuyForm />
-      <ProductListComponent>
-        {stateBuyCards.map(({ name, price, urlImg, idProduct, color }) => {
-          return (
-            <ProductItem
-              key={idProduct}
-              name={name}
-              price={price}
-              urlImg={urlImg}
-              idProduct={idProduct}
-              color={color}
-              active={modal}
-              setActive={setModal}
-              btnText='X'
-              classNameButton='close__button'
-              addToCard={() => {
-                modal ? setModal(false) : setModal(true);
-                dispatch(modalOpen(true));
-                setRemoveCard(idProduct);
-              }}
-            />
-          );
-        })}
-      </ProductListComponent>
-      <ModalEl
-        active={modal}
-        setActive={setModal}
-        header={`Do you want to remove this file?`}
-        text={`Are you sure you want to remove it?`}
-        action={
-          <div>
-            <button onClick={clickModalButton} className='button'>
-              Yes
-            </button>
-            <button onClick={clickCancel} className='button'>
-              No
-            </button>
-          </div>
-        }
-        closeButton
-      />
+      {stateBuyCards.length === 0 ? (
+        <HedingBuyComponent>No Element</HedingBuyComponent>
+      ) : (
+        <>
+          <BuyForm />
+          <ProductListComponent>
+            {stateBuyCards.map(({ name, price, urlImg, idProduct, color }) => {
+              return (
+                <ProductItem
+                  key={idProduct}
+                  name={name}
+                  price={price}
+                  urlImg={urlImg}
+                  idProduct={idProduct}
+                  color={color}
+                  active={modal}
+                  setActive={setModal}
+                  btnText='X'
+                  classNameButton='close__button'
+                  addToCard={() => {
+                    modal ? setModal(false) : setModal(true);
+                    dispatch(modalOpen(true));
+                    setRemoveCard(idProduct);
+                  }}
+                />
+              );
+            })}
+          </ProductListComponent>
+          <ModalEl
+            active={modal}
+            setActive={setModal}
+            header={`Do you want to remove this file?`}
+            text={`Are you sure you want to remove it?`}
+            action={
+              <div>
+                <button onClick={clickModalButton} className='button'>
+                  Yes
+                </button>
+                <button onClick={clickCancel} className='button'>
+                  No
+                </button>
+              </div>
+            }
+            closeButton
+          />
+        </>
+      )}
     </>
   );
 }
