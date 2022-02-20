@@ -5,12 +5,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Favorites from './components/favorites-component/Favorites.js';
 import NavComponent from './components/nav-component/NavComponent.js';
 import Buy from './components/buy-component/Buy.js';
-import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import persistedReducer from './store/reducer.js';
-import thunk from 'redux-thunk';
-import persistStore from 'redux-persist/es/persistStore';
 import { PersistGate } from 'redux-persist/integration/react';
+import store from './store/store.js';
+import { persistor } from './store/store.js';
 
 const AppComponent = styled.div`
   min-width: 1200px;
@@ -47,16 +45,6 @@ const GlobalStyle = createGlobalStyle`
   }
  }
 `;
-
-const composeEnhancers =
-  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-    : compose;
-
-const enhancer = composeEnhancers(applyMiddleware(thunk));
-
-const store = createStore(persistedReducer, enhancer);
-const persistor = persistStore(store);
 
 function App() {
   return (

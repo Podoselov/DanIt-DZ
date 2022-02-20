@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ModalEl component> Modal render 1`] = `
+<div
+  class="sc-bdvvtL gtCsIZ"
+  style="display: block;"
+>
+  <div
+    class="sc-gsDKAQ dwbzkt"
+  >
+    <h2>
+      header
+    </h2>
+    <p>
+      text
+    </p>
+  </div>
+</div>
+`;
